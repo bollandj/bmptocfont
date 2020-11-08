@@ -8,7 +8,7 @@
 #define CHAR_WIDTH 6
 #define CHAR_HEIGHT 8
 
-#define PRINT_IMAGE
+//#define PRINT_IMAGE
 
 int start_char = -1;
 int end_char = -1;
@@ -154,9 +154,9 @@ int main(int argc, char *argv[])
 
 		for (long c = 0; c < bmp.width; c++)
 		{
-			char pixel; // could be up to 64 bits per pixel
+			char pixel; // could be up to 64 bits per pixel - 8 bits assumed for now
 			fread(&pixel, sizeof(char), 1, bmp_file);
-			bmp_buf[bmp_buf_ptr++] = pixel ? 0x00 : 0xFF;
+			bmp_buf[bmp_buf_ptr++] = pixel ? 0x00 : 0xFF; // pure black (hex #00) is a mark; everything else is a space
 		}
 	}
 
